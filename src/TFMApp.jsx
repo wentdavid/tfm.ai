@@ -176,7 +176,7 @@ function Welcome({ onLaunch, accent, setAccentIdx }){
     <div className="flex items-center justify-center min-h-screen p-6">
       <motion.div initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{duration:.6}} className="w-full max-w-5xl">
         <GlassCard className="p-10 relative overflow-hidden">
-          <motion.div initial={{scale:1.08, opacity:0}} animate={{scale:1, opacity:.12}} transition={{duration:1.2}} className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-white/70 blur-3xl" />
+          <motion.div initial={{scale:1.08, opacity:0}} animate={{scale:1, opacity:.12}} transition={{duration:1.2}} className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-white/70 blur-3xl pointer-events-none" />
           <div className="flex items-start justify-between gap-6">
             <div className="max-w-xl">
               <div className="flex items-center gap-2 text-sm text-zinc-600 mb-4"><Sparkles size={16}/><span>TFM.ai Prototype</span></div>
