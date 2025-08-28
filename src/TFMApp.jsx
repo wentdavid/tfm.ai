@@ -624,7 +624,7 @@ function CVModal({ onClose }){
   return (
     <motion.div className="fixed inset-0 z-50 grid place-items-center p-6" initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
       <div className="absolute inset-0 bg-black/40" onClick={onClose}/>
-      <GlassCard className="relative max-w-3xl w-full p-6" id="about-david">
+      <GlassCard className="relative max-w-3xl w-full p-6 max-h-[85vh] overflow-y-auto" id="about-david">
         <div className="flex items-center gap-2 text-zinc-600 text-sm"><User size={16}/> About David</div>
         <h3 className="text-2xl font-semibold mt-2">CV & Fit for AI Solutions Engineer</h3>
         <div className="mt-3 grid md:grid-cols-3 gap-4">
