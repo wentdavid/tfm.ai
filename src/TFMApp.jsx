@@ -145,7 +145,14 @@ export default function App(){
   const bgGrad = `bg-gradient-to-br ${accent.class}`;
 
   return (
-    <div className={cx("min-h-screen text-zinc-900", bgGrad)}>
+    <div className="min-h-screen text-zinc-900 relative overflow-hidden">
+      <motion.div
+        key={accentIdx}
+        className={cx("absolute inset-0 -z-10 bg-gradient-to-br", accent.class)}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      />
       <div className="pointer-events-none fixed inset-0 opacity-[.04]" style={{backgroundImage: "url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'160\\' height=\\'160\\'><filter id=\\'n\\'><feTurbulence type=\\'fractalNoise\\' baseFrequency=\\'0.8\\' numOctaves=\\'2\\'/></filter><rect width=\\'100%\\' height=\\'100%\\' filter=\\'url(%23n)\\'/></svg>')"}}/>
       {!launched ? (
         <Welcome onLaunch={()=>{setLaunched(true); setGuideOpen(true);}} accent={accent} setAccentIdx={setAccentIdx} />
@@ -186,9 +193,18 @@ function Welcome({ onLaunch, accent, setAccentIdx }){
                 <div className="text-xs text-zinc-600">Accent</div>
                 <div className="grid grid-cols-2 gap-2 mt-2">
                   {ACCENTS.map((a,i)=>(
-                    <button key={a.name} onClick={()=>setAccentIdx(i)} className={cx("rounded-xl h-10 w-full border border-white/60 ring-2 transition-transform active:scale-95", a.ring)} title={a.name}>
+                    <motion.button
+                      key={a.name}
+                      type="button"
+                      onClick={()=>setAccentIdx(i)}
+                      whileHover={{ scale: 0.98 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={cx("rounded-xl h-10 w-full border border-white/60 ring-2", a.ring)}
+                      title={a.name}
+                      aria-label={`Set accent ${a.name}`}
+                    >
                       <div className={cx("h-full w-full rounded-xl bg-gradient-to-br", a.class)}/>
-                    </button>
+                    </motion.button>
                   ))}
                 </div>
                 <div className="mt-2 text-xs text-zinc-600">Theme is configurable</div>
