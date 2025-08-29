@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Play, Info, Upload, FileText, BarChart3, CheckCircle2, XCircle, ArrowRight, Wand2, Search, HelpCircle, ShieldCheck, User, ClipboardCopy, Mail, Lock, LayoutDashboard, Handshake, Star, Database, Award, Zap, Lightbulb, Activity } from "lucide-react";
 import './App.css'
 import BudgetPacingFlowchart from "./BudgetPacingFlowchart.jsx";
+import AutomationPlan from "./AutomationPlan.jsx";
 
 const ACCENTS = [
   { name: "Neutral", class: "from-zinc-900 to-zinc-700", ring: "ring-zinc-300" },
@@ -156,7 +157,7 @@ export default function App(){
       />
       <div className="pointer-events-none fixed inset-0 opacity-[.04]" style={{backgroundImage: "url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'160\\' height=\\'160\\'><filter id=\\'n\\'><feTurbulence type=\\'fractalNoise\\' baseFrequency=\\'0.8\\' numOctaves=\\'2\\'/></filter><rect width=\\'100%\\' height=\\'100%\\' filter=\\'url(%23n)\\'/></svg>')"}}/>
       {!launched ? (
-        <Welcome onLaunch={()=>{setLaunched(true); setGuideOpen(true);}} accent={accent} setAccentIdx={setAccentIdx} />
+        <Welcome onLaunch={()=>{setLaunched(true); setGuideOpen(true); setActive("flow");}} accent={accent} setAccentIdx={setAccentIdx} />
       ) : (
         <Main accent={accent} active={active} setActive={setActive} onStartTour={()=>setGuideOpen(true)} onOpenCV={()=>setCvOpen(true)} onWhy={()=>setWhyOpen(true)} />
       )}
@@ -265,8 +266,14 @@ function Main({ accent, active, setActive, onStartTour, onOpenCV, onWhy }){
           </div>
           <div className="p-4 md:p-6">
             {active === "flow" && (
-              <div className="-m-2">
+              <div className="-m-2 grid gap-4">
+                <div className="rounded-2xl border border-white/60 bg-white/70 p-4">
+                  <div className="text-sm text-zinc-600">Current situation</div>
+                  <div className="text-xl font-semibold">Budget pacing workflow based on provided documents</div>
+                  <div className="text-sm text-zinc-600">Interactive flow: click nodes, pan, and zoom</div>
+                </div>
                 <BudgetPacingFlowchart showTests={false} variant="light" heightClass="h-[640px]" />
+                <AutomationPlan />
               </div>
             )}
             {active === "auditor" && <Auditor accent={accent} />}
