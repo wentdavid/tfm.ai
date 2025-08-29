@@ -1,12 +1,33 @@
-# React + Vite
+# TFM.ai – Budget Pacing Flow & Automation Plan
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a small, purpose‑built prototype I created for TFM Digital to demonstrate speed, taste, and usefulness for the AI Solutions role. I built and shipped the first working version in about a day.
 
-Currently, two official plugins are available:
+## What’s inside
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Budget Flow tab with an interactive flowchart
+  - Pan/zoom, click nodes for details, filter views
+  - Roles, thresholds (±5, >5, >25), and mismatch paths
+- “How we fix it” Automation Plan below the flow
+  - Phased steps, team responsibilities, risks, and timeline
+  - Styled to match the app’s glass UI
+- Light, local‑first Vite + React stack with Tailwind
 
-## Expanding the ESLint configuration
+## Why I built this
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+I was assigned a task to document the current workflow and propose a path to improve it. I turned it into a working page so the team has a concrete artifact to discuss and iterate on. This is specifically for TFM to evaluate me for the AI position.
+
+## Run locally
+
+```bash
+npm install
+npm run dev
+# open the URL printed by Vite (e.g. http://localhost:5173/tfm.ai/)
+```
+
+## Deploy (GitHub Pages)
+
+The workflow in `.github/workflows/pages.yml` builds with `VITE_BASE=/<repo>/` so it works for `tfm.ai` and `tfm-sandbox`. Set Pages source to “GitHub Actions”.
+
+---
+
+If you’re reviewing this for TFM: happy to walk through the code, discuss integration options (ad APIs, Sheets/DB, auth), and ship a production‑ready version.
