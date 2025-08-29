@@ -127,11 +127,11 @@ function Section({ title, subtitle, icon:Icon, children }){
 }
 
 function PhaseCard({ phase, index }){
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const Icon = phase.icon;
   return (
-    <motion.div layout whileHover={{scale:1.02}} className="rounded-2xl border border-white/60 bg-white/80 overflow-hidden">
-      <button onClick={()=>setOpen(o=>!o)} className="w-full flex items-center justify-between p-4 text-left">
+    <motion.div layout whileHover={{scale:1.02}} onMouseEnter={()=>setOpen(true)} onMouseLeave={()=>setOpen(false)} className="rounded-2xl border border-white/60 bg-white/80 overflow-hidden">
+      <div className="w-full flex items-center justify-between p-4 text-left">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-white rounded-xl border border-white/60 shadow"><Icon size={18}/></div>
           <div>
@@ -144,7 +144,7 @@ function PhaseCard({ phase, index }){
           <Clock size={16}/> ~{phase.weeks[0]}–{phase.weeks[1]} wks
           {open ? <ChevronDown size={16}/> : <ChevronRight size={16}/>}
         </div>
-      </button>
+      </div>
       <AnimatePresence initial={false}>
         {open && (
           <motion.div initial={{height:0, opacity:0}} animate={{height:"auto", opacity:1}} exit={{height:0, opacity:0}} transition={{duration:.3}}>
