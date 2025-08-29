@@ -127,7 +127,7 @@ function Section({ title, subtitle, icon:Icon, children }){
 }
 
 function PhaseCard({ phase, index }){
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const Icon = phase.icon;
   return (
     <motion.div layout whileHover={{scale:1.02}} className="rounded-2xl border border-white/60 bg-white/80 overflow-hidden">
