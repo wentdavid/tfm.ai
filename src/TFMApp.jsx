@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Play, Info, Upload, FileText, BarChart3, CheckCircle2, XCircle, ArrowRight, Wand2, Search, HelpCircle, ShieldCheck, User, ClipboardCopy, Mail, Lock, LayoutDashboard, Handshake, Star, Database, Award, Zap, Lightbulb } from "lucide-react";
+import { Sparkles, Play, Info, Upload, FileText, BarChart3, CheckCircle2, XCircle, ArrowRight, Wand2, Search, HelpCircle, ShieldCheck, User, ClipboardCopy, Mail, Lock, LayoutDashboard, Handshake, Star, Database, Award, Zap, Lightbulb, Activity } from "lucide-react";
 import './App.css'
+import BudgetPacingFlowchart from "./BudgetPacingFlowchart.jsx";
 
 const ACCENTS = [
   { name: "Neutral", class: "from-zinc-900 to-zinc-700", ring: "ring-zinc-300" },
@@ -251,6 +252,7 @@ function Main({ accent, active, setActive, onStartTour, onOpenCV, onWhy }){
         <GlassCard className="p-2 overflow-hidden">
           <div className="flex gap-2 p-2 overflow-x-auto">
             {[
+              {key:"flow", label:"Budget Flow", icon:Activity},
               {key:"auditor", label:"Campaign Auditor", icon:BarChart3},
               {key:"content", label:"Content Generator", icon:Wand2},
               {key:"seo", label:"Local SEO Planner", icon:Search},
@@ -262,6 +264,11 @@ function Main({ accent, active, setActive, onStartTour, onOpenCV, onWhy }){
             ))}
           </div>
           <div className="p-4 md:p-6">
+            {active === "flow" && (
+              <div className="-m-2">
+                <BudgetPacingFlowchart showTests={false} variant="light" heightClass="h-[640px]" />
+              </div>
+            )}
             {active === "auditor" && <Auditor accent={accent} />}
             {active === "content" && <ContentGen accent={accent} />}
             {active === "seo" && <SEOPlanner accent={accent} />}
