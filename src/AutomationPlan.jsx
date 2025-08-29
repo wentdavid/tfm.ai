@@ -93,7 +93,7 @@ export default function AutomationPlan(){
               <p className="text-zinc-700">Begin with baselining and credentials setup, then deliver an MVP that auto-updates your sheet and ships a daily digest.</p>
               <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-zinc-700">
                 <Link href="mailto:davidwent@me.com" icon={Mail}>Email</Link>
-                <Link href="#" icon={LinkIcon}>Add to deck</Link>
+                
               </div>
             </motion.div>
             <Progress min={totals.min} max={totals.max} />
