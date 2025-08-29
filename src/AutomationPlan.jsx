@@ -22,16 +22,16 @@ function Pill({ icon:Icon, children }){
 
 const PHASES = [
   { key: "p0", title: "Phase 0 – Baseline & guardrails", weeks: [1, 1], icon: ShieldCheck, summary: "Verify rules, map data fields, secure access, and define a single source of truth.", bullets: ["Confirm thresholds, exceptions, and EOD response policy.", "Map campaign keys across platforms and the pacing sheet.", "Set up read-only credentials and secrets storage.", "Agree on Sheet as the MVP surface while APIs become data source."] },
-  { key: "p1", title: "Phase 1 – Automated data ingestion (keep the sheet)", weeks: [3, 5], icon: Database, summary: "Scheduled API jobs write prior-day spend into a staging tab for review and apply → live.", bullets: ["API connectors for Google Ads, Meta, DV360, Broadsign.", "Row reconciliation and mismatch surfacing.", "Variance computation per campaign (±5, >5, >25).", "Audit log of loads and changes."] },
+  { key: "p1", title: "Phase 1 – Automated data ingestion (keep the sheet)", weeks: [3, 5], icon: Database, summary: "Scheduled API jobs write prior-day spend into a staging tab for review and apply → live.", bullets: ["API connectors for Google, Meta, DV360, Broadsign.", "Row reconciliation and mismatch surfacing.", "Variance computation per campaign (±5, >5, >25).", "Audit log of loads and changes."] },
   { key: "p2", title: "Phase 2 – Alerts & daily summary", weeks: [3, 4], icon: Mail, summary: "Automated flags to Slack/Email: >5 in digest, >25 immediate, plus missing/mismatch cases.", bullets: ["Rules engine for severity and deduping.", "Daily digest to named roles; deep links to sheet and campaigns.", "Track and mark issue/solution/no issue inline in sheet."] },
-  { key: "p3", title: "Phase 3 – Month rollover & mid-month changes", weeks: [4, 6], icon: CalendarCheck2, summary: "First-working-day tab creation, multi-month rollovers, and structured budget updates.", bullets: ["Auto create new month tab and roll yellow campaigns.", "Backfill totals for the prior month.", "Intake flow for IMBA/Caves budget updates."] },
+  { key: "p3", title: "Phase 3 – Month rollover & mid-month changes", weeks: [4, 6], icon: CalendarCheck2, summary: "First-working-day tab creation, multi-month rollovers, and structured budget updates.", bullets: ["Auto create new month tab and roll yellow campaigns.", "Backfill totals for the prior month.", "Intake flow for budget updates."] },
   { key: "p4", title: "Phase 4 – Unified dashboard & role views", weeks: [5, 7], icon: BarChart3, summary: "Read-only dashboard with filters, drill-downs, and role-based summaries.", bullets: ["Client and platform filters; variance slicing.", "Drill-down to campaign; export and audit trails.", "Sheet remains as fallback until adoption is stable."] },
 ];
 
 const TEAM = [
-  { role: "Ops (Callan)", icon: ListChecks, duties: ["Sheet integrity and annotations.", "Month rollovers and multi-month highlights.", "Approve staging → live updates."] },
-  { role: "Supervisor (Reuben)", icon: ShieldCheck, duties: ["Policy and escalation rules.", "Sign off daily digest content and channels."] },
-  { role: "Data / Platforms (Mitch, Zaine)", icon: Settings, duties: ["Budget sources (Caves/IMBA) and investigations.", "Resolve mismatches and confirm changes by EOD."] },
+  { role: "Ops", icon: ListChecks, duties: ["Sheet integrity and annotations.", "Month rollovers and multi-month highlights.", "Approve staging → live updates."] },
+  { role: "Supervisor", icon: ShieldCheck, duties: ["Policy and escalation rules.", "Sign off daily digest content and channels."] },
+  { role: "Data / Platforms", icon: Settings, duties: ["Budget sources and investigations.", "Resolve mismatches and confirm changes by EOD."] },
   { role: "Account Leads", icon: Users, duties: ["Confirm IDs and naming conventions.", "Sanity-check alerts and threshold edge cases."] },
   { role: "Engineering / IT", icon: Zap, duties: ["Credentials, runners, monitoring.", "Storage and secrets management."] },
   { role: "Management / Finance", icon: ClipboardList, duties: ["Tolerances and risk acceptance.", "Prioritise phases and go-live checks."] },
@@ -48,8 +48,8 @@ export default function AutomationPlan(){
             <h2 className="mt-1 text-2xl font-semibold tracking-tight">How we fix it — steps, team, and timeline</h2>
             <p className="mt-2 text-zinc-700 max-w-2xl">Start inside your current sheet, add alerts, then move to a unified dashboard. Ship value early and reduce manual effort.</p>
             <div className="mt-3 flex flex-wrap items-center gap-2">
-              <Pill icon={CheckCircle2}>MVP in ~4–6 weeks</Pill>
-              <Pill icon={Clock}>Full rollout ~12–17 weeks</Pill>
+              <Pill icon={CheckCircle2}>MVP in ~4–5 weeks</Pill>
+              <Pill icon={Clock}>Full rollout ~16–23 weeks</Pill>
               <Pill icon={AlertTriangle}>Conservative estimate</Pill>
             </div>
           </motion.div>

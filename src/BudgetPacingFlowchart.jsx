@@ -64,20 +64,20 @@ const gp = (col, row) => ({ x: GRID.xPad + col * GRID.col, y: GRID.yPad + row * 
 
 const NODES = [
   { id: "start", title: "Start of Day", subtitle: "Open platforms and reports", role: "Ops", icon: Activity, ...gp(0, 0), notes: ["Daily cadence for pacing checks.", "Scope: TFM Clients and City Cave."] },
-  { id: "pullReports", title: "Pull Spend Reports", subtitle: "DV360, Meta, Google Ads, Broadsign, Looker Studio", role: "Data", icon: Database, ...gp(1, 0), notes: ["Filter to prior day spend.", "Ensure data freshness and matching campaign IDs."] },
+  { id: "pullReports", title: "Pull Spend Reports", subtitle: "DV360, Meta, Google, Broadsign, Looker Studio", role: "Data", icon: Database, ...gp(1, 0), notes: ["Filter to prior day spend.", "Ensure data freshness and matching campaign IDs."] },
   { id: "updateSheet", title: "Update Pacing Sheet", subtitle: "Paste or sync into Budget Pacing Sheet", role: "Ops", icon: FileSpreadsheet, ...gp(2, 0), notes: ["Highlight finished campaigns in green.", "Highlight multi-month campaigns in yellow."] },
   { id: "computeVariance", title: "Compute Variance vs Budget", subtitle: "Per campaign variance", role: "Data", icon: ListChecks, ...gp(3, 0), notes: ["Within ±5% = OK.", "> 5% off = Flag in daily email.", "> 25% off = Immediate flag."] },
   { id: "ok", title: "Within ±5%", subtitle: "Continue monitoring", role: "Campaign", icon: CheckCircle2, ...gp(4, -0.6), notes: ["No action needed beyond routine checks."] },
   { id: "flagDaily", title: "Over/Under > 5%", subtitle: "Add to daily email", role: "Ops", icon: Mail, ...gp(4, 0.6), notes: ["Subject: Date – TFM Clients – Over and Under.", "Attach screengrabs or % over/under by platform."] },
   { id: "flagImmediate", title: "> 25% Variance", subtitle: "Immediate escalation", role: "Supervisor", icon: AlertTriangle, ...gp(4, 1.8), notes: ["Escalate ASAP for intervention."] },
-  { id: "missingAny", title: "Missing or Mismatched", subtitle: "In sheet but not in spend reports, or vice versa", role: "Data", icon: RefreshCcw, ...gp(3, 1.4), notes: ["If not in sheet but in reports → flag immediately.", "If in sheet but not in reports → flag immediately."] },
-  { id: "investigateCaves", title: "Verify Caves Budget", subtitle: "Mitch checks sheet vs Caves budget", role: "Data", icon: Wrench, ...gp(5, 0.2), notes: ["If variance persists after update, verify budget source.", "Respond per cave with issue/solution/no issue."] },
+  { id: "missingAny", title: "Missing or Mismatched", subtitle: "In sheet but not in spend reports / vice versa", role: "Data", icon: RefreshCcw, ...gp(3, 1.4), notes: ["If not in sheet but in reports → flag immediately.", "If in sheet but not in reports → flag immediately."] },
+  { id: "investigateCaves", title: "Verify Caves Budget", subtitle: "Mitch checks sheet vs budget", role: "Data", icon: Wrench, ...gp(5, 0.2), notes: ["If variance persists after update, verify budget source.", "Respond per cave with issue/solution/no issue."] },
   { id: "investigateIMBA", title: "Verify IMBA Budget", subtitle: "Zaine checks sheet vs IMBA", role: "Data", icon: Wrench, ...gp(5, 1.0), notes: ["If variance persists after update, verify budget source.", "Respond per campaign with issue/solution/no issue."] },
   { id: "addComments", title: "Add Comments", subtitle: "Callan updates sheet annotations", role: "Ops", icon: FileCheck2, ...gp(5, 1.8), notes: ["Document outcomes and next steps in the sheet."] },
   { id: "supervisor", title: "Supervisor Review", subtitle: "Reuben supervision", role: "Supervisor", icon: Users, ...gp(6, 1.0), notes: ["Ensure pacing issues responded to by EOD."] },
   { id: "resolve", title: "Resolve + Communicate", subtitle: "Adjust budgets / fix tracking / pause where needed", role: "Campaign", icon: CheckCircle2, ...gp(7, 1.0), notes: ["Implement fix and confirm in sheet/email.", "Resume monitoring."] },
   { id: "midMonth", title: "Mid‑Month Budget Changes", subtitle: "Mitch/Zaine → Callan or self-update", role: "Data", icon: CalendarCheck2, ...gp(2, 2.2), notes: ["Communicate changes promptly to avoid drift.", "Mitch handles City Cave, Zaine handles TFM clients."] },
-  { id: "newMonth", title: "New Month Roll‑over", subtitle: "Add City Cave tab, roll multi‑month campaigns", role: "Ops", icon: CalendarCheck2, ...gp(3, 2.2), notes: ["First working day of new month.", "Update previous month spend totals.", "Send IMBAs to Callan or update directly."] },
+  { id: "newMonth", title: "New Month Roll‑over", subtitle: "Add tab, roll multi‑month campaigns", role: "Ops", icon: CalendarCheck2, ...gp(3, 2.2), notes: ["First working day of new month.", "Update previous month spend totals.", "Send IMBAs to Callan or update directly."] },
 ];
 
 const EDGES = [
