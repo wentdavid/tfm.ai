@@ -5,5 +5,5 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/tfm.ai/',
+  base: process.env.VITE_BASE || '/tfm.ai/',
 })

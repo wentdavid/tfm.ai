@@ -1,8 +1,8 @@
-name: Deploy Vite site to GitHub Pages
+name: Deploy to GitHub Pages (sandbox)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ sandbox, main ]
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
@@ -20,19 +20,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-      - name: Install
+
+      - name: Install deps
         run: npm ci
-      - name: Build
+
+      - name: Build (base=/<repo>/)
+        env:
+          VITE_BASE: /${{ github.event.repository.name }}/
         run: npm run build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: dist
 
   deploy:
     needs: build
